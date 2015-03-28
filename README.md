@@ -10,6 +10,26 @@ or by using the arrow keys and hitting Enter.
 It is styled with bootstrap, using the [React-Bootstrap](http://react-bootstrap.github.io/) package; it actually displays a `ReactBootstrap.Input` element 
 with a `ReactBootstrap.DropdownMenu` of possible options.
 
+## Installation
+
+  npm install react-dropdown-input --save
+
+## Sample Usage
+ 
+    var searchNames = ['Sydney', 'Melbourne', 'Brisbane', 
+        'Adelaide', 'Perth', 'Hobart'];
+    <DropdownInput 
+        menuClassName='dropdown-input'
+        onSelect={this.handleSelectName}
+        onChange={this.handleChangeName}
+        defaultValue={this.props.initialValue}
+        placeholder='Search...'
+        options={searchNames}
+    >
+    </DropdownInput>
+
+## In more detail...
+
 The options are simply passed as a javascript array (or [immutablejs](http://facebook.github.io/immutable-js/) object)
 to the `options` prop.
 
@@ -32,19 +52,6 @@ Other props you can pass:
          (see `defaultFilter` in the code for the default)
 - `menuClassName`: a class for the menu, which you need for the css styling below;
          eg. 'dropdown-input'.
-
-Eg:
- 
-    var searchNames = ['Sydney', 'Melbourne', 'Brisbane', 'Adelaide', 'Perth', 'Hobart'];
-    <DropdownInput 
-        menuClassName='dropdown-input'
-        onSelect={this.handleSelectName}
-        onChange={this.handleChangeName}
-        defaultValue={this.props.initialValue}
-        placeholder='Search...'
-        options={searchNames}
-    >
-    </DropdownInput>
 
 You can also pass `<DropdownInput>` all the properties that `<ReactBootstrap.Input>` allows,
 eg. `ButtonAfter`.

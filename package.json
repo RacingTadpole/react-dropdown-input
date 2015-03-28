@@ -8,14 +8,20 @@
     "classnames": "^1.1.4",
   },
   "peerDependencies": {
-    "react": ">=0.13"
-    "react-bootstrap": ">=0.18.0",
+    "react": ">=0.13",
+    "react-bootstrap": ">=0.18.0"
   },
-  "author": "Arthur Street",
+  "scripts": {
+    "test": "echo 'No tests yet' && exit 1"
+  },
+  "author": "Arthur Street <arthur@racingtadpole.com> (http://racingtadpole.com/)",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/RacingTadpole/react-dropdown-input.git"
+  },
+    "bugs": {
+    "url": "https://github.com/RacingTadpole/react-dropdown-input/issues"
   },
   "keywords": [
     "react",
@@ -25,6 +31,5 @@
     "combobox",
     "autocomplete"
   ]
-
 }
 
