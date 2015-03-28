@@ -11,6 +11,12 @@ or by using the arrow keys and hitting Enter.
 It is styled with bootstrap, using the [React-Bootstrap](http://react-bootstrap.github.io/) package; it actually displays a `ReactBootstrap.Input` element 
 with a `ReactBootstrap.DropdownMenu` of possible options.
 
+## Demo
+
+[http://racingtadpole.github.io/react-dropdown-input/](http://racingtadpole.github.io/react-dropdown-input/)
+
+(PENDING - I am still developing this and have not yet published the demo!)
+
 ## Installation
 
     npm install react-dropdown-input --
@@ -21,13 +27,13 @@ with a `ReactBootstrap.DropdownMenu` of possible options.
  
     var searchNames = ['Sydney', 'Melbourne', 'Brisbane', 
         'Adelaide', 'Perth', 'Hobart'];
+    //...
     <DropdownInput 
+        options={searchNames}
+        defaultValue={this.props.initialValue}
         menuClassName='dropdown-input'
         onSelect={this.handleSelectName}
-        onChange={this.handleChangeName}
-        defaultValue={this.props.initialValue}
         placeholder='Search...'
-        options={searchNames}
     >
     </DropdownInput>
 
