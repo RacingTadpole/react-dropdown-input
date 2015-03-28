@@ -3,7 +3,8 @@
 React-Dropdown-Input
 ====================
 
-React-dropdown-input displays a text input box. Once the user starts to type, a dropdown menu
+React-dropdown-input displays a "combobox" for [React](http://facebook.github.io/react/). 
+More explicitly, it shows a text input box; once the user starts to type, a dropdown menu
 opens with matching options.  The user can choose one of those options either by clicking one,
 or by using the arrow keys and hitting Enter.
 
@@ -12,7 +13,9 @@ with a `ReactBootstrap.DropdownMenu` of possible options.
 
 ## Installation
 
-  npm install react-dropdown-input --save
+    npm install react-dropdown-input --
+
+(PENDING - I am still developing this and have not yet published this package!)
 
 ## Sample Usage
  
