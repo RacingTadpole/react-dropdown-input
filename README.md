@@ -19,7 +19,7 @@ with a `ReactBootstrap.DropdownMenu` of possible options.
 
 ## Installation
 
-    npm install react-dropdown-input --
+    npm install react-dropdown-input --save
 
 (PENDING - I am still developing this and have not yet published this package!)
 
