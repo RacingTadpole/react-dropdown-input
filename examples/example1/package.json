@@ -1,0 +1,46 @@
+{
+  "name": "react-dropdown-input-example-1",
+  "version": "0.1.0",
+  "description": "Example 1 for react-dropdown-input",
+  "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
+  "main": "index.html",
+  "dependencies": {
+    "react": ">=0.13",
+    "react-bootstrap": ">=0.18.0",
+    "classnames": "^1.1.4",
+    "react-dropdown-input": "~0.1.0"
+  },
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "reactify": "^0.15.2"
+  },
+  "scripts": {
+    "build": "browserify src/js/*.js -o bundle.js -d",
+    "test": "echo 'No tests yet' && exit 1"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "author": "Arthur Street <arthur@racingtadpole.com> (http://racingtadpole.com/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RacingTadpole/react-dropdown-input.git"
+  },
+    "bugs": {
+    "url": "https://github.com/RacingTadpole/react-dropdown-input/issues"
+  },
+  "private": "true",
+  "keywords": [
+    "react",
+    "ecosystem-react",
+    "react-component",
+    "bootstrap",
+    "combobox",
+    "autocomplete",
+    "example"
+  ]
+}
+

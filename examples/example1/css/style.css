@@ -1,0 +1,9 @@
+.dropdown-input .dropdown-menu>li>a:hover, .dropdown-input .dropdown-menu>li>a:focus {
+	color:#333;
+	background-color:#fff;
+}
+.dropdown-input .dropdown-menu>.active>a:hover, .dropdown-input .dropdown-menu>.active>a:focus {
+	text-decoration:none;
+	color:#fff;
+	background-color:#2FA4E7;
+}

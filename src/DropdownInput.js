@@ -19,6 +19,7 @@
 //  Other props you can pass:
 //  filter: a function that determines which options to show, given the input text
 //          (see defaultFilter below for the default)
+//  max:    the maximum number of options to display
 //  menuClassName: a class for the menu, which you need for the css styling below;
 //          eg. 'dropdown-input'.
 //
@@ -101,10 +102,11 @@ var DropdownButton = React.createClass({
     dropup:    React.PropTypes.bool,
     defaultValue: React.PropTypes.string,
     menuClassName: React.PropTypes.string,
+    max: React.PropTypes.number,
     onChange:  React.PropTypes.func,
     onSelect:  React.PropTypes.func,
     navItem:   React.PropTypes.bool,
-    options:   React.PropTypes.object,
+    options:   React.PropTypes.object.isRequired,
     filter:    React.PropTypes.func
   },
 
@@ -128,7 +130,7 @@ var DropdownButton = React.createClass({
       };
     // you can provide a filter prop, which is a function(filterText, optionName, optionIndex) which should
     // return true to show option with the given name and index, given the input filterText.
-    var filteredOptions = this.filteredOptions();
+    var filteredOptions = this.filteredOptions().slice(0,this.props.max);
     var dropdown = null;
     if (genLength(filteredOptions)>0) {
       dropdown = (<DropdownMenu
