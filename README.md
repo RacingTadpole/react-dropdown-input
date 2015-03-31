@@ -89,3 +89,4 @@ the hover highlighting on the active class.  Eg. in sass, add:
 * 0.1.0 Initial release
 * 0.1.1 Point to js (not jsx), update README
 * 0.1.2 Update example
+* 0.1.3 Align package.json version number with git tag
