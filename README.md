@@ -15,13 +15,9 @@ with a `ReactBootstrap.DropdownMenu` of possible options.
 
 [http://racingtadpole.github.io/react-dropdown-input/](http://racingtadpole.github.io/react-dropdown-input/)
 
-(PENDING - I am still developing this and have not yet published the demo!)
-
 ## Installation
 
     npm install react-dropdown-input --save
-
-(PENDING - I am still developing this and have not yet published this package!)
 
 ## Sample Usage
  
@@ -48,7 +44,7 @@ Supply one or both of these callbacks: `onSelect` & `onChange`.
    It passes the object:
 
         { value: input text,
-          index: option index, or -1 if the user has entered their own text and pressed Enter
+          index: option index, or -1 if user entered their own text and pressed Enter
         }
 - `onChange` fires whenever the input text value changes, either due to a click or typing.
    It passes the object:
@@ -91,3 +87,4 @@ the hover highlighting on the active class.  Eg. in sass, add:
 ## Release History
 
 * 0.1.0 Initial release
+* 0.1.1 Point to js (not jsx), update README
