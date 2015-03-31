@@ -4,11 +4,24 @@ var DropdownInput = require('react-dropdown-input');
 var ChooseCity = 
   React.createClass({
 
-    handleSelectName: function(o) {
-      console.log('selected ', o);
+    getInitialState: function() {
+      return {cityText: null}
+    },
+
+    handleSelect: function(choice) {
+      // returns choice.value and choice.index
+      if (choice.index>=0) {
+        this.setState({cityText: choice.value + ' is a nice choice'});
+      } else {
+        this.setState({cityText: choice.value + ' isn\'t on the list!'});
+      }
     },
 
     render: function() {
+      var choiceElt = (<div style={{height:30, paddingBottom:80}}></div>);
+      if (this.state.cityText) {
+        choiceElt = (<div className="pull-right" style={{height:30, paddingBottom:80}}>{this.state.cityText}</div>);
+      }
       return (
         <div>
           <DropdownInput 
@@ -20,6 +33,9 @@ var ChooseCity =
             max={12}
           >
           </DropdownInput>
+          <br />
+          {choiceElt}
+          <div className='clearfix'></div>
         </div>
       )
     }

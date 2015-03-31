@@ -2,12 +2,12 @@
   "name": "react-dropdown-input-example",
   "version": "0.1.0",
   "description": "Example of react-dropdown-input",
-  "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
+  "homepage": "http://racingtadpole.github.io/react-dropdown-input/example/",
   "main": "index.html",
   "dependencies": {
     "react": ">=0.13",
     "react-bootstrap": ">=0.18.0",
-    "react-dropdown-input": "~0.1.0"
+    "react-dropdown-input": "../"
   },
   "devDependencies": {
     "browserify": "^6.2.0",
@@ -34,6 +34,10 @@
     "combobox",
     "autocomplete",
     "example"
+  ],
+  "//": [
+    "to manually rebuild after a change in the react-dropdown-input module, you can use:",
+    "cd .. ; npm run build && cd example && rm -rf node_modules/react-dropdown-input/ && npm install && npm run build"
   ]
 }
 
