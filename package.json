@@ -5,7 +5,7 @@
   "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
   "main": "src/DropdownInput.js",
   "dependencies": {
-    "classnames": "^1.1.4",
+    "classnames": "^1.1.4"
   },
   "peerDependencies": {
     "react": ">=0.13",
@@ -20,7 +20,7 @@
     "type": "git",
     "url": "https://github.com/RacingTadpole/react-dropdown-input.git"
   },
-    "bugs": {
+  "bugs": {
     "url": "https://github.com/RacingTadpole/react-dropdown-input/issues"
   },
   "keywords": [
