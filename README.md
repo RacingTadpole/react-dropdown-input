@@ -88,3 +88,6 @@ the hover highlighting on the active class.  Eg. in sass, add:
       }
     }
 
+## Release History
+
+* 0.1.0 Initial release
