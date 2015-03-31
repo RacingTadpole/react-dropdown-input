@@ -51,7 +51,7 @@ names = [
   'Albany',
   'Warragul',
   'Devonport'
-];
+].sort();
 
 React.render(
   <div className='container'>

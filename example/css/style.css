@@ -1,9 +1,18 @@
-.dropdown-input .dropdown-menu>li>a:hover, .dropdown-input .dropdown-menu>li>a:focus {
+.dropdown-input.dropdown-menu>li>a:hover, .dropdown-input.dropdown-menu>li>a:focus {
 	color:#333;
 	background-color:#fff;
 }
-.dropdown-input .dropdown-menu>.active>a:hover, .dropdown-input .dropdown-menu>.active>a:focus {
+.dropdown-input.dropdown-menu>.active>a:hover, .dropdown-input.dropdown-menu>.active>a:focus {
 	text-decoration:none;
 	color:#fff;
-	background-color:#2FA4E7;
+	background-color:#337ab7;
+}
+.dropdown-input.dropdown-menu>.disabled>a {
+	color: #999;
+	font-style: italic;
+}
+.dropdown-input.dropdown-menu>.active.disabled>a {
+	text-decoration:none;
+	color: #999;
+	background-color:#fff;
 }

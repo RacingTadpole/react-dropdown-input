@@ -34,6 +34,10 @@
     "combobox",
     "autocomplete",
     "example"
+  ],
+  "//": [
+    "to manually rebuild after a change in the react-dropdown-input module, you can use:",
+    "cd .. ; npm run build && cd example && rm -rf node_modules/react-dropdown-input/ && npm install && npm run build"
   ]
 }
 

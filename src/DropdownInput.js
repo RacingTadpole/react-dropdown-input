@@ -17,9 +17,11 @@
 //    { value: input text }
 //
 //  Other props you can pass:
-//  filter: a function that determines which options to show, given the input text
-//          (see defaultFilter below for the default)
-//  max:    the maximum number of options to display
+//  filter:  a function that determines which options to show, given the input text
+//           (see defaultFilter below for the default)
+//  max:     the maximum number of options to display
+//  maxText: text of a disabled MenuItem to show at the end of a list, if the max is exceeded
+//           replaces '#' with the number not shown; defaults to '+# more not shown'
 //  menuClassName: a class for the menu, which you need for the css styling below;
 //          eg. 'dropdown-input'.
 //
@@ -73,6 +75,7 @@ var Input = ReactBootstrap.Input;
 var DropdownMenu = ReactBootstrap.DropdownMenu;
 var MenuItem = ReactBootstrap.MenuItem;
 
+var defaultMaxText = '+# more not shown';
 
 var defaultFilter = function(filterText, optionName, optionIndex) {
   return (optionName.toLowerCase().indexOf(filterText.toLowerCase())>=0);
@@ -95,19 +98,21 @@ var caseInsensIndexOf = function(list, str) {
 
 
 var DropdownButton = React.createClass({
+
   mixins: [BootstrapMixin, DropdownStateMixin],
 
   propTypes: {
-    pullRight: React.PropTypes.bool,
-    dropup:    React.PropTypes.bool,
-    defaultValue: React.PropTypes.string,
+    pullRight:     React.PropTypes.bool,
+    dropup:        React.PropTypes.bool,
+    defaultValue:  React.PropTypes.string,
     menuClassName: React.PropTypes.string,
-    max: React.PropTypes.number,
-    onChange:  React.PropTypes.func,
-    onSelect:  React.PropTypes.func,
-    navItem:   React.PropTypes.bool,
-    options:   React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]).isRequired,
-    filter:    React.PropTypes.func
+    max:           React.PropTypes.number,
+    maxText:       React.PropTypes.string,
+    onChange:      React.PropTypes.func,
+    onSelect:      React.PropTypes.func,
+    navItem:       React.PropTypes.bool,
+    options:       React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]).isRequired,
+    filter:        React.PropTypes.func
   },
 
   getInitialState: function () {
@@ -122,6 +127,15 @@ var DropdownButton = React.createClass({
     return this.props.options.filter(filter.bind(undefined, this.state.value));
   },
 
+  cappedLength: function(options) {
+    var total = genLength(options);
+    if (total>this.props.max) {
+      // if it exceeded the max, we took an extra one off
+      total = this.props.max-1;
+    }
+    return total;
+  },
+
   render: function () {
     var classes = {
         'dropdown': true,
@@ -130,9 +144,18 @@ var DropdownButton = React.createClass({
       };
     // you can provide a filter prop, which is a function(filterText, optionName, optionIndex) which should
     // return true to show option with the given name and index, given the input filterText.
-    var filteredOptions = this.filteredOptions().slice(0,this.props.max);
+    var filteredOptions = this.filteredOptions();
+    var numFiltered = genLength(filteredOptions);
+    var maxMenuItem = null;
+    var maxText = typeof this.props.maxText==='undefined' ? defaultMaxText : this.props.maxText;
+    if (this.props.max && numFiltered>this.props.max) {
+      // take an extra one off, to leave space for the maxText
+      filteredOptions = filteredOptions.slice(0,this.props.max-1);
+      maxText = maxText.replace('#', (numFiltered - this.props.max));
+      maxMenuItem = this.renderAsMenuItem(maxText, this.props.max, null, true);
+    }
     var dropdown = null;
-    if (genLength(filteredOptions)>0) {
+    if (numFiltered>0) {
       dropdown = (<DropdownMenu
           className={this.props.menuClassName}
           ref="menu"
@@ -141,6 +164,7 @@ var DropdownButton = React.createClass({
           key={1}
           onSelect={null}>
           {filteredOptions.map(this.renderAsMenuItem)}
+          {maxMenuItem}
         </DropdownMenu>);
     }
     return (
@@ -165,14 +189,19 @@ var DropdownButton = React.createClass({
     );
   },
 
-  renderAsMenuItem: function(item, index) {
+  renderAsMenuItem: function(item, index, options, disabled) {
     var start = item.toLowerCase().indexOf(this.state.value.toLowerCase()),
         end   = start + this.state.value.length,
         part1 = item.slice(0,start),
         part2 = item.slice(start, end),
         part3 = item.slice(end);
-    var classes = cx({active: this.state.activeIndex===index});
-    
+    var classes = cx({active: this.state.activeIndex===index, disabled: disabled===true});
+    if (disabled) {
+      // don't highlight parts of disabled items, eg. the maxText
+      part1 = item;
+      part2 = null;
+      part3 = null;
+    }
     return (
       <MenuItem 
         key={index} 
@@ -195,7 +224,7 @@ var DropdownButton = React.createClass({
   handleKeyDown: function(e) {
     // catch arrow keys and the Enter key
     var filteredOptions = this.filteredOptions();
-    var numOptions = genLength(filteredOptions);
+    var numOptions = this.cappedLength(filteredOptions);
     var newName;
     switch(e.keyCode){
 
@@ -212,16 +241,19 @@ var DropdownButton = React.createClass({
         break;
 
       case 13: // enter
+        var newIndex = caseInsensIndexOf(this.props.options, this.state.value);  // may need this
         if (this.state.activeIndex >= 0 && this.state.activeIndex < numOptions) {
+          newIndex = this.state.activeIndex;
           newName = genGet(filteredOptions, this.state.activeIndex);
           this.setDropdownState(false);
-        } else if (this.state.activeIndex === -1 && caseInsensIndexOf(this.props.options, this.state.value)>=0) {
-          newName = genGet(this.props.options, caseInsensIndexOf(this.props.options, this.state.value));
+        } else if (this.state.activeIndex === -1 && newIndex>=0) {
+          newName = genGet(this.props.options, newIndex);
           this.setDropdownState(false);
         } else {
+          newIndex = this.state.activeIndex;
           newName = this.state.value;
         }
-        this.sendSelect({value: newName, index: this.state.activeIndex});
+        this.sendSelect({value: newName, index: newIndex});
         this.sendChange({value: newName});
         this.setState({value: newName, activeIndex: -1});
         break;

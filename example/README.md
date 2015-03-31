@@ -3,7 +3,7 @@ React-Dropdown-Input Example
 
 See this live at:
 
-[http://racingtadpole.github.io/react-dropdown-input/](http://racingtadpole.github.io/react-dropdown-input/)
+[http://racingtadpole.github.io/react-dropdown-input/example/](http://racingtadpole.github.io/react-dropdown-input/example/)
 
 Or, clone this repo and build it from source with:
 

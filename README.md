@@ -13,7 +13,7 @@ with a `ReactBootstrap.DropdownMenu` of possible options.
 
 ## Demo
 
-[http://racingtadpole.github.io/react-dropdown-input/](http://racingtadpole.github.io/react-dropdown-input/)
+[http://racingtadpole.github.io/react-dropdown-input/example/](http://racingtadpole.github.io/react-dropdown-input/example/)
 
 ## Installation
 
@@ -54,34 +54,45 @@ Supply one or both of these callbacks: `onSelect` & `onChange`.
 Other props you can pass:
 
 - `filter`: a function that determines which options to show, given the input text
-         (see `defaultFilter` in the code for the default)
+  (see `defaultFilter` in the code for the default).
 - `menuClassName`: a class for the menu, which you need for the css styling below;
-         eg. 'dropdown-input'.
+  eg. 'dropdown-input'.
+- `max`: the maximum number of options to display.
+- `maxText`: text of a disabled MenuItem to show at the end of a list, if the max is exceeded
+  replaces '#' with the number not shown; defaults to '+# more not shown'.
 
 You can also pass `<DropdownInput>` all the properties that `<ReactBootstrap.Input>` allows,
 eg. `ButtonAfter`.
 
-IMPORTANT NOTE
---------------
+IMPORTANT NOTE ABOUT CSS
+------------------------
 
 You need to turn off Bootstrap's hover highlighting css for this element;
 we do it manually using the active class instead.  You may also need to re-enable
-the hover highlighting on the active class.  Eg. in sass, add:
+the hover highlighting on the active class.  Eg. in sass, add this:
 
-    .dropdown-input .dropdown-menu > li > a {
+    .dropdown-input.dropdown-menu > li > a {
       &:hover,
       &:focus {
-        color: $dropdown-link-color;
-        background-color: $dropdown-bg;
+        color: $dropdown-link-color;  // #333
+        background-color: $dropdown-bg; // #fff
       }
     }
-    .dropdown-input .dropdown-menu > .active > a {
+    .dropdown-input.dropdown-menu > .active > a {
       &:hover,
       &:focus {
         text-decoration: none;
-        color: $dropdown-link-hover-color;
-        background-color: $dropdown-link-hover-bg;
+        color: $dropdown-link-hover-color;  // #fff
+        background-color: $dropdown-link-hover-bg;  // #337ab7
       }
+    }
+
+If you're showing `maxText`, you may also want to make sure it can't be selected too:
+
+    .dropdown-input.dropdown-menu>.active.disabled>a {
+      text-decoration: none;
+      color: $dropdown-link-disabled-color; // #777
+      background-color: $dropdown-bg; // #fff
     }
 
 ## Release History
@@ -90,3 +101,4 @@ the hover highlighting on the active class.  Eg. in sass, add:
 * 0.1.1 Point to js (not jsx), update README
 * 0.1.2 Update example
 * 0.1.3 Align package.json version number with git tag
+* 0.1.4 Added maxText property
