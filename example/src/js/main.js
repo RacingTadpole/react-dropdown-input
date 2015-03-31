@@ -60,6 +60,7 @@ React.render(
         <h1>Welcome</h1>
         <p>Please choose a city</p>
         <ChooseCity options={names} max={12}/>
+        <a className='pull-right' href='https://github.com/RacingTadpole/react-dropdown-input/'>View on Github</a>
       </div>
     </div>
   </div>

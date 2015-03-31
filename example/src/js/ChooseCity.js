@@ -13,14 +13,14 @@ var ChooseCity =
       if (choice.index>=0) {
         this.setState({cityText: choice.value + ' is a nice choice'});
       } else {
-        this.setState({cityText: choice.value + ' wasn\'t on the list!'});
+        this.setState({cityText: choice.value + ' isn\'t on the list!'});
       }
     },
 
     render: function() {
-      var choiceElt = null;
+      var choiceElt = (<div style={{height:30, paddingBottom:80}}></div>);
       if (this.state.cityText) {
-        choiceElt = (<div>{this.state.cityText}</div>);
+        choiceElt = (<div className="pull-right" style={{height:30, paddingBottom:80}}>{this.state.cityText}</div>);
       }
       return (
         <div>
@@ -35,6 +35,7 @@ var ChooseCity =
           </DropdownInput>
           <br />
           {choiceElt}
+          <div className='clearfix'></div>
         </div>
       )
     }
