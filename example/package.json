@@ -7,7 +7,7 @@
   "dependencies": {
     "react": ">=0.13",
     "react-bootstrap": ">=0.18.0",
-    "react-dropdown-input": "~0.1.0"
+    "react-dropdown-input": "../"
   },
   "devDependencies": {
     "browserify": "^6.2.0",

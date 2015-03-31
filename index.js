@@ -110,7 +110,7 @@ var DropdownButton = React.createClass({
     onChange: React.PropTypes.func,
     onSelect: React.PropTypes.func,
     navItem: React.PropTypes.bool,
-    options: React.PropTypes.object.isRequired,
+    options: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]).isRequired,
     filter: React.PropTypes.func
   },
 
