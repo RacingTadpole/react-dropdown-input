@@ -1,6 +1,6 @@
 {
   "name": "react-dropdown-input",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Displays a Bootstrap Input element with a DropdownMenu of possible options (similar to a combobox)",
   "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
   "main": "index.js",
@@ -15,12 +15,18 @@
     "babel": "^4.7.16",
     "babel-eslint": "^2.0.2",
     "eslint": "^0.18.0",
-    "eslint-plugin-react": "^2.0.2"
+    "eslint-plugin-react": "^2.0.2",
+    "jest-cli": "0.2.1",
+    "react-tools": "^0.13.1"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/jest-preprocessor.js",
+    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"]
   },
   "scripts": {
     "build": "npm run lint && node_modules/.bin/babel src/DropdownInput.js > index.js",
     "lint": "./node_modules/eslint/bin/eslint.js src/DropdownInput.js example/src/js/ChooseCity.js",
-    "test": "echo 'No tests yet' && exit 1"
+    "test": "jest"
   },
   "author": "Arthur Street <arthur@racingtadpole.com> (http://racingtadpole.com/)",
   "license": "MIT",
