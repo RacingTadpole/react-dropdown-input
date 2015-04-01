@@ -1,11 +1,12 @@
 //
 // main.js
 //
+'use strict';
 
 var React = require('react');
 var ChooseCity = require('./ChooseCity');
 
-names = [
+var names = [
   'Sydney',
   'Melbourne',
   'Brisbane',

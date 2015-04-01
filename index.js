@@ -1,7 +1,3 @@
-"use strict";
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 //
 //  DropdownInput, using React-Bootstrap
 //  Displays a ReactBootstrap.Input element
@@ -65,6 +61,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //   }
 // }
 
+"use strict";
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var React = require("react/addons");
 var ReactBootstrap = require("react-bootstrap");
 var joinClasses = require("react/lib/joinClasses");
@@ -72,14 +72,14 @@ var cx = require("classnames");
 
 var BootstrapMixin = ReactBootstrap.BootstrapMixin;
 var DropdownStateMixin = ReactBootstrap.DropdownStateMixin;
-
-var Input = ReactBootstrap.Input;
 var DropdownMenu = ReactBootstrap.DropdownMenu;
+var Input = ReactBootstrap.Input;
 var MenuItem = ReactBootstrap.MenuItem;
 
 var defaultMaxText = "+# more not shown";
 
-var defaultFilter = function defaultFilter(filterText, optionName, optionIndex) {
+var defaultFilter = function defaultFilter(filterText, optionName) {
+  // also optionIndex as third arg
   return optionName.toLowerCase().indexOf(filterText.toLowerCase()) >= 0;
 };
 
@@ -116,7 +116,11 @@ var DropdownButton = React.createClass({
     onSelect: React.PropTypes.func,
     navItem: React.PropTypes.bool,
     options: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]).isRequired,
-    filter: React.PropTypes.func
+    filter: React.PropTypes.func,
+    // the rest are to make eslint happy
+    id: React.PropTypes.string,
+    className: React.PropTypes.string,
+    bsSize: React.PropTypes.string
   },
 
   getInitialState: function getInitialState() {
@@ -286,7 +290,7 @@ var DropdownButton = React.createClass({
     this.setDropdownState(!this.state.open);
   },
 
-  handleOptionSelect: function handleOptionSelect(key, name, e) {
+  handleOptionSelect: function handleOptionSelect(key, name) {
     // the user clicked on a dropdown menu item
     this.setDropdownState(false);
     this.sendSelect({ value: name, index: this.state.activeIndex });

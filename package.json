@@ -1,6 +1,6 @@
 {
   "name": "react-dropdown-input",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Displays a Bootstrap Input element with a DropdownMenu of possible options (similar to a combobox)",
   "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
   "main": "index.js",
@@ -12,10 +12,14 @@
     "react-bootstrap": ">=0.18.0"
   },
   "devDependencies": {
-    "babel": "^4.7.16"
+    "babel": "^4.7.16",
+    "babel-eslint": "^2.0.2",
+    "eslint": "^0.18.0",
+    "eslint-plugin-react": "^2.0.2"
   },
   "scripts": {
     "build": "node_modules/.bin/babel src/DropdownInput.js > index.js",
+    "lint": "./node_modules/eslint/bin/eslint.js src/DropdownInput.js example/src/js/ChooseCity.js",
     "test": "echo 'No tests yet' && exit 1"
   },
   "author": "Arthur Street <arthur@racingtadpole.com> (http://racingtadpole.com/)",
@@ -34,5 +38,39 @@
     "bootstrap",
     "combobox",
     "autocomplete"
-  ]
+  ],
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "react"
+    ],
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "env": {
+      "node": true,
+      "browser": true
+    },
+    "rules": {
+      "react/display-name": 0,
+      "react/jsx-quotes": 1,
+      "react/jsx-no-undef": 1,
+      "react/jsx-sort-props": 0,
+      "react/jsx-uses-react": 1,
+      "react/jsx-uses-vars": 1,
+      "react/no-did-mount-set-state": 1,
+      "react/no-did-update-set-state": 1,
+      "react/no-multi-comp": 1,
+      "react/no-unknown-property": 1,
+      "react/prop-types": 2,
+      "react/react-in-jsx-scope": 1,
+      "react/self-closing-comp": 1,
+      "react/wrap-multilines": 1,
+      "quotes": [
+        1,
+        "single",
+        "avoid-escape"
+      ]
+    }
+  }
 }

@@ -1,6 +1,6 @@
 //
 //  DropdownInput, using React-Bootstrap
-//  Displays a ReactBootstrap.Input element 
+//  Displays a ReactBootstrap.Input element
 //  with a ReactBootstrap.DropdownMenu of possible options.
 //
 //  The options are simply passed as a javascript array (or immutablejs object)
@@ -27,7 +27,7 @@
 //
 //  Eg.
 //   var searchNames = ['Sydney', 'Melbourne', 'Brisbane', 'Adelaide', 'Perth', 'Hobart'];
-//   <DropdownInput 
+//   <DropdownInput
 //     menuClassName='dropdown-input'
 //     onSelect={this.handleSelectName}
 //     onChange={this.handleChangeName}
@@ -61,7 +61,7 @@
 //   }
 // }
 
-
+'use strict';
 
 var React = require('react/addons');
 var ReactBootstrap = require('react-bootstrap');
@@ -70,31 +70,30 @@ var cx = require('classnames');
 
 var BootstrapMixin = ReactBootstrap.BootstrapMixin;
 var DropdownStateMixin = ReactBootstrap.DropdownStateMixin;
-
-var Input = ReactBootstrap.Input;
 var DropdownMenu = ReactBootstrap.DropdownMenu;
+var Input = ReactBootstrap.Input;
 var MenuItem = ReactBootstrap.MenuItem;
 
 var defaultMaxText = '+# more not shown';
 
-var defaultFilter = function(filterText, optionName, optionIndex) {
-  return (optionName.toLowerCase().indexOf(filterText.toLowerCase())>=0);
-}
+var defaultFilter = function(filterText, optionName) { // also optionIndex as third arg
+  return (optionName.toLowerCase().indexOf(filterText.toLowerCase()) >= 0);
+};
 
 var genLength = function(list) {
   // deal with both regular arrays and immutablejs objects, which have .count() instead of length
-  return (typeof list.count!=='undefined' ? list.count() : list.length);
-}
+  return (typeof list.count !== 'undefined' ? list.count() : list.length);
+};
 
 var genGet = function(list, i) {
   // deal with both regular arrays and immutablejs objects, which have list.get(i) instead of list[i]
-  return (typeof list.get!=='undefined' ? list.get(i) : list[i]);
-}
+  return (typeof list.get !== 'undefined' ? list.get(i) : list[i]);
+};
 
 var caseInsensIndexOf = function(list, str) {
-  var lowerList = list.map(function(item) { return item.toLowerCase() });
+  var lowerList = list.map(function(item) { return item.toLowerCase(); });
   return lowerList.indexOf(str.toLowerCase());
-}
+};
 
 
 var DropdownButton = React.createClass({
@@ -102,17 +101,21 @@ var DropdownButton = React.createClass({
   mixins: [BootstrapMixin, DropdownStateMixin],
 
   propTypes: {
-    pullRight:     React.PropTypes.bool,
-    dropup:        React.PropTypes.bool,
-    defaultValue:  React.PropTypes.string,
+    pullRight: React.PropTypes.bool,
+    dropup: React.PropTypes.bool,
+    defaultValue: React.PropTypes.string,
     menuClassName: React.PropTypes.string,
-    max:           React.PropTypes.number,
-    maxText:       React.PropTypes.string,
-    onChange:      React.PropTypes.func,
-    onSelect:      React.PropTypes.func,
-    navItem:       React.PropTypes.bool,
-    options:       React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]).isRequired,
-    filter:        React.PropTypes.func
+    max: React.PropTypes.number,
+    maxText: React.PropTypes.string,
+    onChange: React.PropTypes.func,
+    onSelect: React.PropTypes.func,
+    navItem: React.PropTypes.bool,
+    options: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]).isRequired,
+    filter: React.PropTypes.func,
+    // the rest are to make eslint happy
+    id: React.PropTypes.string,
+    className: React.PropTypes.string,
+    bsSize: React.PropTypes.string
   },
 
   getInitialState: function () {
@@ -131,7 +134,7 @@ var DropdownButton = React.createClass({
     var total = genLength(options);
     if (total>this.props.max) {
       // if it exceeded the max, we took an extra one off
-      total = this.props.max-1;
+      total = this.props.max - 1;
     }
     return total;
   },
@@ -147,10 +150,10 @@ var DropdownButton = React.createClass({
     var filteredOptions = this.filteredOptions();
     var numFiltered = genLength(filteredOptions);
     var maxMenuItem = null;
-    var maxText = typeof this.props.maxText==='undefined' ? defaultMaxText : this.props.maxText;
-    if (this.props.max && numFiltered>this.props.max) {
+    var maxText = typeof this.props.maxText === 'undefined' ? defaultMaxText : this.props.maxText;
+    if (this.props.max && numFiltered > this.props.max) {
       // take an extra one off, to leave space for the maxText
-      filteredOptions = filteredOptions.slice(0,this.props.max-1);
+      filteredOptions = filteredOptions.slice(0, this.props.max - 1);
       maxText = maxText.replace('#', (numFiltered - this.props.max));
       maxMenuItem = this.renderAsMenuItem(maxText, this.props.max, null, true);
     }
@@ -171,8 +174,8 @@ var DropdownButton = React.createClass({
       <div className={joinClasses(this.props.className, cx(classes))}>
         <Input
           {...this.props}
-          type="text" 
-          bsSize={this.props.bsSize} 
+          type="text"
+          bsSize={this.props.bsSize}
           ref="dropdownInput"
           onClick={this.handleDropdownClick}
           key={0}
@@ -191,8 +194,8 @@ var DropdownButton = React.createClass({
 
   renderAsMenuItem: function(item, index, options, disabled) {
     var start = item.toLowerCase().indexOf(this.state.value.toLowerCase()),
-        end   = start + this.state.value.length,
-        part1 = item.slice(0,start),
+        end = start + this.state.value.length,
+        part1 = item.slice(0, start),
         part2 = item.slice(start, end),
         part3 = item.slice(end);
     var classes = cx({active: this.state.activeIndex===index, disabled: disabled===true});
@@ -203,14 +206,14 @@ var DropdownButton = React.createClass({
       part3 = null;
     }
     return (
-      <MenuItem 
-        key={index} 
-        onSelect={this.handleOptionSelect.bind(this, index, item)} 
+      <MenuItem
+        key={index}
+        onSelect={this.handleOptionSelect.bind(this, index, item)}
         className={classes}
         onMouseEnter={this.handleMouseEnter.bind(this, index)}>
           {part1}<b>{part2}</b>{part3}
       </MenuItem>
-    )
+    );
   },
 
   handleInputChange: function(e) {
@@ -246,7 +249,7 @@ var DropdownButton = React.createClass({
           newIndex = this.state.activeIndex;
           newName = genGet(filteredOptions, this.state.activeIndex);
           this.setDropdownState(false);
-        } else if (this.state.activeIndex === -1 && newIndex>=0) {
+        } else if (this.state.activeIndex === -1 && newIndex >= 0) {
           newName = genGet(this.props.options, newIndex);
           this.setDropdownState(false);
         } else {
@@ -272,7 +275,7 @@ var DropdownButton = React.createClass({
     this.setDropdownState(!this.state.open);
   },
 
-  handleOptionSelect: function(key, name, e) {
+  handleOptionSelect: function(key, name) {
     // the user clicked on a dropdown menu item
     this.setDropdownState(false);
     this.sendSelect({value: name, index: this.state.activeIndex});
