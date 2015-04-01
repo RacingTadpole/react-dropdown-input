@@ -1,11 +1,17 @@
+'use strict';
 var React = require('react');
 var DropdownInput = require('react-dropdown-input');
 
-var ChooseCity = 
+var ChooseCity =
   React.createClass({
 
+    propTypes: {
+      lookupText: React.PropTypes.string,
+      options: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]).isRequired
+    },
+
     getInitialState: function() {
-      return {cityText: null}
+      return {cityText: null};
     },
 
     handleSelect: function(choice) {
@@ -18,26 +24,21 @@ var ChooseCity =
     },
 
     render: function() {
-      var choiceElt = (<div style={{height:30, paddingBottom:80}}></div>);
-      if (this.state.cityText) {
-        choiceElt = (<div className="pull-right" style={{height:30, paddingBottom:80}}>{this.state.cityText}</div>);
-      }
       return (
         <div>
-          <DropdownInput 
-          	menuClassName="dropdown-input"
+          <DropdownInput
+            menuClassName='dropdown-input'
             onSelect={this.handleSelect}
             defaultValue={this.props.lookupText}
             placeholder='Choose a city...'
             options={this.props.options}
             max={12}
-          >
-          </DropdownInput>
+          />
           <br />
-          {choiceElt}
+          <div className='pull-right' style={{height: 30, paddingBottom: 80}}>{this.state.cityText}</div>
           <div className='clearfix'></div>
         </div>
-      )
+      );
     }
   });
 

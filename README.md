@@ -102,3 +102,4 @@ If you're showing `maxText`, you may also want to make sure it can't be selected
 * 0.1.2 Update example
 * 0.1.3 Align package.json version number with git tag
 * 0.1.4 Added maxText property
+* 0.1.5 Added eslint to dev
