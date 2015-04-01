@@ -159,7 +159,7 @@ var DropdownButton = React.createClass({
     if (this.props.max && numFiltered > this.props.max) {
       // take an extra one off, to leave space for the maxText
       filteredOptions = filteredOptions.slice(0, this.props.max - 1);
-      maxText = maxText.replace("#", numFiltered - this.props.max);
+      maxText = maxText.replace("#", numFiltered - this.props.max + 1);
       maxMenuItem = this.renderAsMenuItem(maxText, this.props.max, null, true);
     }
     var dropdown = null;
