@@ -5,10 +5,8 @@
   "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
   "main": "index.js",
   "dependencies": {
-    "classnames": "^1.1.4"
-  },
-  "peerDependencies": {
-    "react": ">=0.13",
+    "classnames": "^1.1.4",
+    "react": ">=0.12",
     "react-bootstrap": ">=0.18.0"
   },
   "devDependencies": {
@@ -26,7 +24,8 @@
   "scripts": {
     "build": "npm run lint && node_modules/.bin/babel src/DropdownInput.js > index.js",
     "lint": "./node_modules/eslint/bin/eslint.js src/DropdownInput.js example/src/js/ChooseCity.js",
-    "test": "jest"
+    "test": "jest",
+    "test-debug": "node-debug --nodejs --harmony ./node_modules/jest-cli/bin/jest.js --runInBand"
   },
   "author": "Arthur Street <arthur@racingtadpole.com> (http://racingtadpole.com/)",
   "license": "MIT",
