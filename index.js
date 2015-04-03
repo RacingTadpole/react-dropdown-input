@@ -181,6 +181,8 @@ var DropdownButton = React.createClass({
       "div",
       { className: joinClasses(this.props.className, cx(classes)) },
       React.createElement(Input, _extends({}, this.props, {
+        menuClassName: null,
+        options: null,
         type: "text",
         bsSize: this.props.bsSize,
         ref: "dropdownInput",

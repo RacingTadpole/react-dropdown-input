@@ -1,6 +1,6 @@
 {
   "name": "react-dropdown-input",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Displays a Bootstrap Input element with a DropdownMenu of possible options (similar to a combobox)",
   "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
   "main": "index.js",
@@ -21,7 +21,10 @@
     "scriptPreprocessor": "<rootDir>/jest-preprocessor.js",
     "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"]
   },
-  "//": "using node 0.10.x and jest-cli 0.2.1 until jest works on Mac OS with node v0.12.x",
+  "//": [
+    "to run tests, I use node 0.10.x and jest-cli 0.2.1 as jest 0.4.0 doesn't work on my Mac OS with node v0.12.x",
+    "but to build, I use node 0.12.x because babel won't run on node 0.10.x"
+  ],
   "scripts": {
     "build": "npm run lint && node_modules/.bin/babel src/DropdownInput.js > index.js",
     "lint": "./node_modules/eslint/bin/eslint.js src/DropdownInput.js example/src/js/ChooseCity.js",
