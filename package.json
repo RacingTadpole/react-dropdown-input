@@ -1,26 +1,32 @@
 {
   "name": "react-dropdown-input",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Displays a Bootstrap Input element with a DropdownMenu of possible options (similar to a combobox)",
   "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
   "main": "index.js",
   "dependencies": {
-    "classnames": "^1.1.4"
-  },
-  "peerDependencies": {
-    "react": ">=0.13",
+    "classnames": "^1.1.4",
+    "react": ">=0.12",
     "react-bootstrap": ">=0.18.0"
   },
   "devDependencies": {
     "babel": "^4.7.16",
     "babel-eslint": "^2.0.2",
     "eslint": "^0.18.0",
-    "eslint-plugin-react": "^2.0.2"
+    "eslint-plugin-react": "^2.0.2",
+    "jest-cli": "0.2.1",
+    "react-tools": "^0.13.1"
   },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/jest-preprocessor.js",
+    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"]
+  },
+  "//": "using node 0.10.x and jest-cli 0.2.1 until jest works on Mac OS with node v0.12.x",
   "scripts": {
     "build": "npm run lint && node_modules/.bin/babel src/DropdownInput.js > index.js",
     "lint": "./node_modules/eslint/bin/eslint.js src/DropdownInput.js example/src/js/ChooseCity.js",
-    "test": "echo 'No tests yet' && exit 1"
+    "test": "jest",
+    "test-debug": "node-debug --nodejs --harmony ./node_modules/jest-cli/bin/jest.js --runInBand"
   },
   "author": "Arthur Street <arthur@racingtadpole.com> (http://racingtadpole.com/)",
   "license": "MIT",

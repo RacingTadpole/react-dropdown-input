@@ -174,6 +174,8 @@ var DropdownButton = React.createClass({
       <div className={joinClasses(this.props.className, cx(classes))}>
         <Input
           {...this.props}
+          menuClassName={null}
+          options={null}
           type="text"
           bsSize={this.props.bsSize}
           ref="dropdownInput"

@@ -104,3 +104,4 @@ If you're showing `maxText`, you may also want to make sure it can't be selected
 * 0.1.4 Added maxText property
 * 0.1.5 Added eslint to dev
 * 0.1.6 Corrected number not shown
+* 0.1.7 Added working tests using jest
