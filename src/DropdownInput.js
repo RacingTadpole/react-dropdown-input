@@ -34,8 +34,7 @@
 //     defaultValue={this.props.initialValue}
 //     placeholder='Search...'
 //     options={searchNames}
-//   >
-//   </DropdownInput>
+//   />
 //
 // You can also pass <DropdownInput> all the properties that <ReactBootstrap.Input> allows,
 // eg. ButtonAfter.

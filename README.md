@@ -30,8 +30,7 @@ with a `ReactBootstrap.DropdownMenu` of possible options.
         menuClassName='dropdown-input'
         onSelect={this.handleSelectName}
         placeholder='Search...'
-    >
-    </DropdownInput>
+    />
 
 ## In more detail...
 
@@ -106,3 +105,4 @@ If you're showing `maxText`, you may also want to make sure it can't be selected
 * 0.1.6 Corrected number not shown
 * 0.1.7 Don't pass options and menuClassName props through to Input
 * 0.1.8 Added working tests using jest
+* 0.1.9 Use self-closing tag in ReadMe
