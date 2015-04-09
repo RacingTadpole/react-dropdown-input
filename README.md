@@ -96,13 +96,14 @@ If you're showing `maxText`, you may also want to make sure it can't be selected
 
 ## Release History
 
-* 0.1.0 Initial release
-* 0.1.1 Point to js (not jsx), update README
-* 0.1.2 Update example
-* 0.1.3 Align package.json version number with git tag
-* 0.1.4 Added maxText property
-* 0.1.5 Added eslint to dev
-* 0.1.6 Corrected number not shown
-* 0.1.7 Don't pass options and menuClassName props through to Input
-* 0.1.8 Added working tests using jest
-* 0.1.9 Use self-closing tag in ReadMe
+* 0.1.0  Initial release
+* 0.1.1  Point to js (not jsx), update README
+* 0.1.2  Update example
+* 0.1.3  Align package.json version number with git tag
+* 0.1.4  Added maxText property
+* 0.1.5  Added eslint to dev
+* 0.1.6  Corrected number not shown
+* 0.1.7  Don't pass options and menuClassName props through to Input
+* 0.1.8  Added working tests using jest
+* 0.1.9  Use self-closing tag in ReadMe
+* 0.1.10 Remove extra comments, rename var as DropdownInput

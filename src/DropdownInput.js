@@ -1,64 +1,8 @@
 //
-//  DropdownInput, using React-Bootstrap
+//  react-dropdown-input
 //  Displays a ReactBootstrap.Input element
 //  with a ReactBootstrap.DropdownMenu of possible options.
 //
-//  The options are simply passed as a javascript array (or immutablejs object)
-//  to the 'options' prop.
-//
-//  Supply one or both of these callbacks: onSelect & onChange.
-//  onSelect fires when an option is clicked, or when Enter is pressed.
-//    It passes the object:
-//    { value: input text,
-//      index: option index, or -1 if the user has entered their own text and pressed Enter
-//    }
-//  onChange fires whenever the input text value changes, either due to a click or typing.
-//    It passes the object:
-//    { value: input text }
-//
-//  Other props you can pass:
-//  filter:  a function that determines which options to show, given the input text
-//           (see defaultFilter below for the default)
-//  max:     the maximum number of options to display
-//  maxText: text of a disabled MenuItem to show at the end of a list, if the max is exceeded
-//           replaces '#' with the number not shown; defaults to '+# more not shown'
-//  menuClassName: a class for the menu, which you need for the css styling below;
-//          eg. 'dropdown-input'.
-//
-//  Eg.
-//   var searchNames = ['Sydney', 'Melbourne', 'Brisbane', 'Adelaide', 'Perth', 'Hobart'];
-//   <DropdownInput
-//     menuClassName='dropdown-input'
-//     onSelect={this.handleSelectName}
-//     onChange={this.handleChangeName}
-//     defaultValue={this.props.initialValue}
-//     placeholder='Search...'
-//     options={searchNames}
-//   />
-//
-// You can also pass <DropdownInput> all the properties that <ReactBootstrap.Input> allows,
-// eg. ButtonAfter.
-//
-// IMPORTANT NOTE
-// You need to turn off Bootstrap's hover highlighting css for this element;
-// we do it manually using the active class instead.  You may also need to re-enable
-// the hover highlighting on the active class.  Eg. in sass, add:
-//
-// .dropdown-input .dropdown-menu > li > a {
-//   &:hover,
-//   &:focus {
-//     color: $dropdown-link-color;
-//     background-color: $dropdown-bg;
-//   }
-// }
-// .dropdown-input .dropdown-menu > .active > a {
-//   &:hover,
-//   &:focus {
-//     text-decoration: none;
-//     color: $dropdown-link-hover-color;
-//     background-color: $dropdown-link-hover-bg;
-//   }
-// }
 
 'use strict';
 
@@ -95,7 +39,7 @@ var caseInsensIndexOf = function(list, str) {
 };
 
 
-var DropdownButton = React.createClass({
+var DropdownInput = React.createClass({
 
   mixins: [BootstrapMixin, DropdownStateMixin],
 
@@ -299,4 +243,4 @@ var DropdownButton = React.createClass({
 
 });
 
-module.exports = DropdownButton;
+module.exports = DropdownInput;
