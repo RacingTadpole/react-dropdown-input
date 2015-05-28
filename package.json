@@ -1,11 +1,11 @@
 {
   "name": "react-dropdown-input",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Displays a Bootstrap Input element with a DropdownMenu of possible options (similar to a combobox)",
   "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
   "main": "index.js",
   "dependencies": {
-    "classnames": "^1.1.4",
+    "classnames": ">=1.1.4",
     "react": ">=0.12",
     "react-bootstrap": ">=0.18.0"
   },

@@ -205,6 +205,9 @@ var DropdownInput = React.createClass({
       case 13:
         // enter
         var newIndex = caseInsensIndexOf(this.props.options, this.state.value); // may need this
+        if (this.state.open) {
+          e.preventDefault();
+        }
         if (this.state.activeIndex >= 0 && this.state.activeIndex < numOptions) {
           newIndex = this.state.activeIndex;
           newName = genGet(filteredOptions, this.state.activeIndex);

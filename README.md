@@ -107,3 +107,4 @@ If you're showing `maxText`, you may also want to make sure it can't be selected
 * 0.1.8  Added working tests using jest
 * 0.1.9  Use self-closing tag in ReadMe
 * 0.1.10 Remove extra comments, rename var as DropdownInput
+* 0.1.11 Prevent form submission if open
