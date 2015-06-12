@@ -160,7 +160,7 @@ var DropdownInput = React.createClass({
       MenuItem,
       {
         key: index,
-        onSelect: this.handleOptionSelect.bind(this, index, item),
+        onSelect: disabled ? null : this.handleOptionSelect.bind(this, index, item),
         className: classes,
         onMouseEnter: this.handleMouseEnter.bind(this, index) },
       part1,
