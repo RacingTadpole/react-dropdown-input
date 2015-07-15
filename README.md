@@ -61,7 +61,7 @@ Other props you can pass:
   replaces '#' with the number not shown; defaults to '+# more not shown'.
 
 You can also pass `<DropdownInput>` all the properties that `<ReactBootstrap.Input>` allows,
-eg. `ButtonAfter`.
+eg. `ButtonAfter` or `autoFocus`.
 
 IMPORTANT NOTE ABOUT CSS
 ------------------------
