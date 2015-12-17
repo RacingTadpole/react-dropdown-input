@@ -8,9 +8,8 @@
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var React = require("react/addons");
+var React = require("react");
 var ReactBootstrap = require("react-bootstrap");
-var joinClasses = require("react/lib/joinClasses");
 var cx = require("classnames");
 
 var BootstrapMixin = ReactBootstrap.BootstrapMixin;
@@ -122,7 +121,7 @@ var DropdownInput = React.createClass({
     }
     return React.createElement(
       "div",
-      { className: joinClasses(this.props.className, cx(classes)) },
+      { className: cx(this.props.className, classes) },
       React.createElement(Input, _extends({}, this.props, {
         menuClassName: null,
         options: null,
