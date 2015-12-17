@@ -6,7 +6,7 @@
 
 'use strict';
 
-var React = require('react/addons');
+var React = require('react');
 var ReactBootstrap = require('react-bootstrap');
 var cx = require('classnames');
 
